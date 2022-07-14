@@ -66,26 +66,24 @@ for (course_code in course_code_list) {
   # Reading the HTML code from the website
   webpage <- read_html(url)
   
-  # Using CSS selectors to scrape the learning outomes section
-  learning_outcomes_data_html <- html_nodes(webpage, 'ol')
+  # Using CSS selectors to scrape the learning outcomes section
+  html <- html_nodes(webpage, 'ol')
   
   # Converting the learning outcomes data to text
-  learning_outcomes_data <- html_text(learning_outcomes_data_html)
+  learning_outcomes <- html_text(html)
   
   # Selecting learning outcomes data
-  learning_outcomes_data <- learning_outcomes_data[1]
+  learning_outcomes <- learning_outcomes[1]
   
   
   
-  ### Data Cleaning --------------------------------------------------------------
+  ### Data Cleaning ------------------------------------------------------------
   
-  # Remove punctuation, lowercase words, split string into tibble as individual words
-  learning_outcomes_words <- learning_outcomes_data %>% 
+  # Remove non-letter characters, lowercase words, split string into tibble as
+  # individual words
+  learning_outcomes_words <- learning_outcomes %>% 
     
-    str_replace_all(pattern = ";", replace = " ") %>% 
-    str_replace_all(pattern = "\\.", replace = " ") %>% 
-    str_replace_all(pattern = ",", replace = " ") %>% 
-    str_replace_all(pattern = "/", replace = " ") %>% 
+    str_replace_all(pattern = "[^a-zA-Z]", replace = " ") %>%
     
     tolower() %>% 
     
