@@ -1,7 +1,7 @@
-# Data Projects
+# Data Projects Template
 
-This space is for all things curious and experimental.
+This space is for developing templates for future data projects.
 
-0-00_setup_and_configuration.R is an R script that calls in all relevant R packages.
+0-00_setup_and_configuration.R is an R script that calls in common R packages and explains their use cases.
 
-1-01_web_scraping.R produces two frequency bar chart plots of ANU Programs and Courses Learning Outcomes for all the courses that Johann has enrolled in so far.
+1-01_project_name.R is the main template for exploratory data analysis.
